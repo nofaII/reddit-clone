@@ -18,7 +18,7 @@ export const setPosts = posts => ({
 export const receivePosts = (subreddit, filter, count) => {
     return dispatch => {
         dispatch(isFetching(true));
-        axios.get(`${subreddit}/${filter}.json?limit=${count}`)
+        axios.get(`${subreddit}${filter}.json?limit=${count}`)
             .then(response => {
                 return response.data.data.children.map(child => ({
                         time: child.data.created_utc,

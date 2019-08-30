@@ -22,11 +22,11 @@ const App = () => {
         <Route path='/rising' exact render={() => 
           <Feed props={'for new'}/>}/>
         <Route path='/Login' exact component={LogIn}/>
-        <Redirect exact from='/' to='/feed' />
+        
         <Route component={NotFound}/>
       </Switch>
     </div>
   );
 }
-
+// Make subreddit flow through store
 export default App;
