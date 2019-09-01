@@ -6,7 +6,8 @@ import {withRouter} from 'react-router-dom'
 
 const mapStateToProps = state => ({
     posts: state.posts,
-    isFetching: state.isFetching
+    isFetching: state.isFetching,
+    subreddit: state.subreddit
 })
 
 export default compose(connect(mapStateToProps, {receivePosts}), withRouter)(Feed);

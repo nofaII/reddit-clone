@@ -1,11 +1,13 @@
 import {
     IS_FETCHING,
-    SET_POSTS
+    SET_POSTS,
+    SET_SUBREDDIT
 } from './../actions/action-types';
 
 const initialState = {
     posts: [],
-    isFetching: false
+    isFetching: false,
+    subreddit: 'frontend'
 }
 
 const posts = (state=initialState, action) => {
@@ -14,6 +16,11 @@ const posts = (state=initialState, action) => {
             return {
                 ...state,
                 isFetching: action.payload.status
+            }
+        case SET_SUBREDDIT: 
+            return {
+                ...state,
+                subreddit: action.payload.subreddit
             }
         case SET_POSTS:
             return {

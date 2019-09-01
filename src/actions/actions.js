@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
     IS_FETCHING,
-    SET_POSTS
+    SET_POSTS,
+    SET_SUBREDDIT
 } from './action-types';
 axios.defaults.baseURL = 'https://www.reddit.com/r/';
 
@@ -13,6 +14,11 @@ export const isFetching = status => ({
 export const setPosts = posts => ({
     type: SET_POSTS,
     payload: {posts}
+})
+
+export const setSubreddit = subreddit => ({
+    type: SET_SUBREDDIT,
+    payload: {subreddit}
 })
 
 export const receivePosts = (subreddit, filter, count) => {
