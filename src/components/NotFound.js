@@ -1,15 +1,13 @@
 import React from 'react';
 
-class NotFound extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>404</h1>
-                <h2>Seems something went wrong</h2>
-                <button onClick={() => this.props.history.goBack()}>Go back</button>
-            </div>
-        )
-    }
+const NotFound = ({history:{goBack}}) => {
+    return (
+        <div>
+            <h1>404</h1>
+            <h2>Seems something went wrong</h2>
+            <button onClick={() => goBack()}>Go back</button>
+        </div>
+    )
 }
 
 export default NotFound;
