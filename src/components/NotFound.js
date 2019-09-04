@@ -6,7 +6,7 @@ class NotFound extends React.Component {
             <div>
                 <h1>404</h1>
                 <h2>Seems something went wrong</h2>
-                <button onClick={this.toMainPage}>Go back</button>
+                <button onClick={() => this.props.history.goBack()}>Go back</button>
             </div>
         )
     }

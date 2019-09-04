@@ -1,22 +1,29 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import SubredditList from '../../containers/SubredditListContainer';
 
-class Header extends React.Component {
+const Header = ({fetchAsNecessary, setSubreddit, subreddit, filter, setFilter, options}) => {
 
-    render() {
-        return (
+    const onChanger = e => {
+        fetchAsNecessary(e.target.value, filter)
+        setSubreddit(e.target.value)
+        setFilter(subreddit, filter)
+    }
+
+    return (
+        <div>
             <nav>
                 <NavLink to='/hot'>Hot</NavLink>
                 <NavLink to='/top'>Top</NavLink>
                 <NavLink to='/new'>New</NavLink>
                 <NavLink to='/controversial'>Controversial</NavLink>
                 <NavLink to='/rising'>Rising</NavLink>
-                <SubredditList />
-                <NavLink to='/Login'>Login</NavLink>
             </nav>
-        )
-    }
+            <select value={subreddit} onChange={onChanger}>
+                {options.map(item => <option key={item} value={item}>{item}</option>)}
+            </select>
+        </div>
+        
+    )
 }
 
 export default Header;

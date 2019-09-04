@@ -3,29 +3,29 @@ import Post from './Post/Post';
 
 class Feed extends React.Component {
     componentDidMount() {
-        this.props.receivePosts(this.props.subreddit, this.props.location.pathname, 20)
+        const {selectedSubreddit, location: {pathname}} = this.props
+        this.props.fetchAsNecessary(selectedSubreddit, pathname)
+        this.props.setFilter(selectedSubreddit , pathname)
     }
 
-    componentDidUpdate() {
-        this.props.receivePosts(this.props.subreddit, this.props.location.pathname, 20)
-    }
-
-    shouldComponentUpdate(prevProps) {
-        if(this.props.location.pathname === prevProps.location.pathname)  {
-            if(this.props.posts.length === 0 || prevProps.subreddit !== this.props.subreddit) {return true}
-            return false
+    componentDidUpdate(prevProps) {
+        const {selectedSubreddit, location: {pathname},  fetchAsNecessary, setFilter} = this.props
+        if (selectedSubreddit !== prevProps.selectedSubreddit || pathname !== prevProps.location.pathname) {
+            fetchAsNecessary(selectedSubreddit, pathname)
+            setFilter(selectedSubreddit, pathname)
         }
-        return true;
     }
+
 
     render() {
-        console.log(this.props.location.pathname)
         return (
             <div>
-                {this.props.posts.map(post => {
-                    return <Post key={post.id} post={post}/>
-                })}
-                Feed
+                {this.props.isFetching 
+                    ? <h2>Wait please...</h2> 
+                    : this.props.posts.map(post => {
+                        return <Post key={post.id} post={post}/>
+                    })}
+                
             </div>
         )
     }

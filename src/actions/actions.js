@@ -1,49 +1,75 @@
 import axios from 'axios';
-import {
-    IS_FETCHING,
-    SET_POSTS,
-    SET_SUBREDDIT
+import { 
+    SET_SUBREDDIT,
+    REQUEST_POSTS, 
+    RECEIVE_POSTS,
+    SET_FILTER
 } from './action-types';
+
 axios.defaults.baseURL = 'https://www.reddit.com/r/';
 
-export const isFetching = status => ({
-    type: IS_FETCHING,
-    payload: {status}
+const requestPosts = (subreddit) => ({
+        type: REQUEST_POSTS,
+        subreddit
 })
 
-export const setPosts = posts => ({
-    type: SET_POSTS,
-    payload: {posts}
+const recievePosts = (subreddit, posts) => ({
+        type: RECEIVE_POSTS,
+        subreddit,
+        posts: posts
 })
 
-export const setSubreddit = subreddit => ({
-    type: SET_SUBREDDIT,
-    payload: {subreddit}
-})
-
-export const receivePosts = (subreddit, filter, count) => {
-    return dispatch => {
-        dispatch(isFetching(true));
-        axios.get(`${subreddit}${filter}.json?limit=${count}`)
+const fetchPosts = (subreddit, filter) => {
+    return (dispatch) => {
+        dispatch(requestPosts(subreddit))
+        return axios.get(`/${subreddit}${filter}.json`)
             .then(response => {
                 return response.data.data.children.map(child => ({
-                        time: child.data.created_utc,
-                        image: child.data.url,
-                        score: child.data.score,
-                        link: child.data.permalink,
-                        comments: child.data.num_comments,
-                        author: child.data.author,
-                        title: child.data.title,
-                        sub: child.data.subreddit_name_prefixed,
-                        id: child.data.id
-                    })
-                )
+                    time: child.data.created_utc,
+                    image: child.data.url,
+                    score: child.data.score,
+                    link: child.data.permalink,
+                    comments: child.data.num_comments,
+                    author: child.data.author,
+                    title: child.data.title,
+                    sub: child.data.subreddit_name_prefixed,
+                    id: child.data.id
+                })
+            )
             })
             .then(posts => {
-                dispatch(setPosts(posts));
-                dispatch(isFetching(false));
+                dispatch(recievePosts(subreddit, posts));
             })
-            .catch(error => console.log('something went wrong: ' + error))
     }
 }
 
+const shouldFetch = (state, subreddit, filter) => {
+    const posts = state.postsBySubreddit[subreddit]
+
+    if (!posts) {
+        return true
+    } else if (posts.isFetching) {
+        return true        
+    } else if(posts.filter !== filter) {
+        return true
+    }
+}
+
+export const fetchAsNecessary = (subreddit, filter) => {
+    return (dispatch, getState) => {
+        if (shouldFetch(getState(), subreddit, filter)) {
+            return dispatch(fetchPosts(subreddit, filter))
+        }
+    }
+}
+
+export const setSubreddit = (subreddit) => ({
+        type: SET_SUBREDDIT,
+        subreddit
+})
+
+export const setFilter = (subreddit, filter) => ({
+        type: SET_FILTER,
+        subreddit,
+        filter
+})

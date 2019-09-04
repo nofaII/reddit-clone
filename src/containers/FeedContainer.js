@@ -1,13 +1,19 @@
 import {connect} from 'react-redux';
-import {compose} from 'redux';
-import {receivePosts} from './../actions/actions';
+import {fetchAsNecessary, setFilter} from './../actions/actions';
 import Feed from './../components/Feed';
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
+import {compose} from 'redux';
 
-const mapStateToProps = state => ({
-    posts: state.posts,
-    isFetching: state.isFetching,
-    subreddit: state.subreddit
-})
-
-export default compose(connect(mapStateToProps, {receivePosts}), withRouter)(Feed);
+function mapStateToProps(state) {
+    const { selectedSubreddit, postsBySubreddit } = state
+    const {isFetching, lastUpdated, items: posts} = postsBySubreddit[selectedSubreddit] || {isFetching: true, items: []}
+    
+    return {
+        selectedSubreddit,
+        posts,
+        isFetching,
+        lastUpdated,
+        gra: state
+    }
+}
+export default compose(connect(mapStateToProps, {fetchAsNecessary, setFilter}), withRouter)(Feed)
