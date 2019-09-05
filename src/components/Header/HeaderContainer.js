@@ -1,6 +1,6 @@
-import Header from '../components/Header/Header'
+import Header from './Header'
 import {connect} from 'react-redux';
-import {fetchAsNecessary, setSubreddit, setFilter} from '../actions/actions';
+import {fetchAsNecessary, setSubreddit, setFilter} from '../../actions/actions';
 
 const mapStateToProps = state => {
     const {filter} = state.postsBySubreddit[state.selectedSubreddit] || 'funny'

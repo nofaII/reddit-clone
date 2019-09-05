@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import {fetchAsNecessary, setFilter} from './../actions/actions';
-import Feed from './../components/Feed';
+import {fetchAsNecessary, setFilter} from '../../actions/actions';
+import Feed from './Feed';
 import {withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import {Switch, Route, Redirect} from 'react-router-dom';
-import Feed from './containers/FeedContainer';
-import Header from './containers/HeaderContainer';
+import Feed from './components/Feed/FeedContainer';
+import Header from './components/Header/HeaderContainer';
 import NotFound from './components/NotFound';
 import LogIn from './components/LogIn';
 
