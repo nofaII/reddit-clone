@@ -13,9 +13,9 @@ class Post extends React.Component {
                 <span>/////////////////</span> <br/>
                 <span>/////////////////</span> <br/>
                 {time} <br/>
-                {image} <br/>
+                {image ? <img src={image} alt="" height='300' /> : console.log('kek')} <br/>
                 {score} <br/>
-                {link} <br/>
+                <a href={link}>comments</a> <br/>
                 {comments} <br/>
                 {author} <br/>
                 {title} <br/>

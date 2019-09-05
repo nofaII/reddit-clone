@@ -23,6 +23,8 @@ class Feed extends React.Component {
                 {this.props.isFetching 
                     ? <h2>Wait please...</h2> 
                     : this.props.posts.map(post => {
+                        console.log(post.image );
+                         
                         return <Post key={post.id} post={post}/>
                     })}
                 

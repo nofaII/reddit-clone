@@ -27,7 +27,7 @@ const fetchPosts = (subreddit, filter) => {
             .then(response => {
                 return response.data.data.children.map(child => ({
                     time: timePassage(child.data.created_utc),
-                    image: child.data.url,
+                    image: child.data.url  || false,
                     score: child.data.score,
                     link: child.data.permalink,
                     comments: child.data.num_comments,
