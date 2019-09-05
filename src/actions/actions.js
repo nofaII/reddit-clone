@@ -5,6 +5,7 @@ import {
     RECEIVE_POSTS,
     SET_FILTER
 } from './action-types';
+import timePassage from '../utils/timePassage';
 
 axios.defaults.baseURL = 'https://www.reddit.com/r/';
 
@@ -25,7 +26,7 @@ const fetchPosts = (subreddit, filter) => {
         return axios.get(`/${subreddit}${filter}.json`)
             .then(response => {
                 return response.data.data.children.map(child => ({
-                    time: child.data.created_utc,
+                    time: timePassage(child.data.created_utc),
                     image: child.data.url,
                     score: child.data.score,
                     link: child.data.permalink,
