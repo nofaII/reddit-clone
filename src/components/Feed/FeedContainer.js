@@ -13,7 +13,7 @@ function mapStateToProps(state) {
         posts,
         isFetching,
         lastUpdated,
-        gra: state
+        gra: state,
     }
 }
 export default compose(connect(mapStateToProps, {fetchAsNecessary, setFilter}), withRouter)(Feed)

@@ -2,7 +2,10 @@ import React from 'react';
 
 class Post extends React.Component {
     render() {
-        const {time, image, score, link, comments, author, title, sub} = this.props.post
+        
+        
+        const {time, image, score, link, comments, author, title, sub, post_hint} = this.props.post
+        
         return (
             <div className="post section-body">
                 <div className="post__upvote">
@@ -25,12 +28,16 @@ class Post extends React.Component {
                         </div>
                     </div>
                     <div className="post__content-title">
-                        <h3>
-                            {title}
-                        </h3>
+                        <a href={link}>
+                            <h3>
+                                {title}
+                            </h3>
+                        </a>
                     </div>
                     <div className="post__content-image">
-                        {image ? <img height='400' src={image} alt=""/> : null}
+                        {post_hint === 'image' 
+                        ? <img src={image} alt=""/> 
+                        : null}  
                     </div>
                     <div className="post__content-comments">
                         <a href={link}>

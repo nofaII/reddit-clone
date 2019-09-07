@@ -34,7 +34,8 @@ const fetchPosts = (subreddit, filter) => {
                     author: child.data.author,
                     title: child.data.title,
                     sub: child.data.subreddit_name_prefixed,
-                    id: child.data.id
+                    id: child.data.id,
+                    post_hint: child.data.post_hint
                 })
             )
             })

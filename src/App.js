@@ -10,13 +10,10 @@ const App = () => {
 
     //arrows around score
     //options style
-    //comment style
     //404 style
     //score helper
-    //fix bug with empty img
     //post page to func
     //propTypes
-    //center the img
     //currect comment link
 
     //ReadMe refactoring

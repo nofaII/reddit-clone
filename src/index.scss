@@ -66,12 +66,17 @@ body {
 
       &-item {
         padding-right: 15px;
+        font-size: 10px;
       }
       
     }
 
     &-title {
       padding: 10px 0;
+      a {
+        color: $fonts;
+        text-decoration: none;
+      }
     }
 
     &-comments {
@@ -79,6 +84,18 @@ body {
       a {
         text-decoration: none;
       }
+    }
+
+    &-image {
+      width: 500px;
+      text-align: center;
+      img {
+        max-width: 300px;
+      }
+    }
+
+    &-comments {
+      a {color: $fonts;}
     }
   }
 }
