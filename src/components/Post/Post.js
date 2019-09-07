@@ -1,32 +1,43 @@
 import React from 'react';
-import Upvote from './Upvote';
-import Info from './Info';
-import Content from './Сontent';
-import Interaction from './Interaction';
 
 class Post extends React.Component {
     render() {
         const {time, image, score, link, comments, author, title, sub} = this.props.post
         return (
-            <div>
-                <span>/////////////////</span> <br/>
-                <span>/////////////////</span> <br/>
-                <span>/////////////////</span> <br/>
-                {time} <br/>
-                {image ? <img src={image} alt="" height='300' /> : console.log('kek')} <br/>
-                {score} <br/>
-                <a href={link}>comments</a> <br/>
-                {comments} <br/>
-                {author} <br/>
-                {title} <br/>
-                {sub} <br/>
-                <span>/////////////////</span> <br/>
-                <span>/////////////////</span> <br/>
-                <span>/////////////////</span> <br/>
-                <Upvote/>
-                <Info/>
-                <Content/>
-                <Interaction/>
+            <div className="post section-body">
+                <div className="post__upvote">
+                    <div className="post__upvote-score">
+                        <button className="post__upvote-score_up"></button>
+                        <p >{score}</p>
+                        <button className="post__upvote-score_down"></button>
+                    </div>
+                </div>
+                <div className="post__content">
+                    <div className="post__content-info">
+                        <div className="post__content-info-item">
+                            <span>{sub}</span>
+                        </div>
+                        <div className="post__content-info-item">
+                            <span>{author}</span>
+                        </div>
+                        <div className="post__content-info-item">
+                            <span>{time}</span>
+                        </div>
+                    </div>
+                    <div className="post__content-title">
+                        <h3>
+                            {title}
+                        </h3>
+                    </div>
+                    <div className="post__content-image">
+                        {image ? <img height='400' src={image} alt=""/> : null}
+                    </div>
+                    <div className="post__content-comments">
+                        <a href={link}>
+                            <span>{comments} Comments</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         )
     }
