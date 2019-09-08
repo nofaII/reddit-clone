@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from '../Post/Post';
+import loader from '../../assets/loader.gif';
 
 class Feed extends React.Component {
     componentDidMount() {
@@ -21,7 +22,9 @@ class Feed extends React.Component {
         return (
             <div>
                 {this.props.isFetching 
-                    ? <h2>Wait please...</h2> 
+                    ? <div className='loader'>
+                        <img src={loader} alt=""/>
+                      </div>
                     : this.props.posts.map(post => {
                         return <Post key={post.id} post={post}/>
                     })}

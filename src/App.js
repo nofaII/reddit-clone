@@ -9,7 +9,6 @@ const App = () => {
     // list:
 
     //arrows around score
-    //options style
     //404 style
     //score helper
     //post page to func
@@ -21,9 +20,9 @@ const App = () => {
     <div className="app">
       <Header 
         options={[
-          'funny', 'frontend', 'sports', 'memes',
-          'gaming', 'movies', 'politics', 'lifehacks', 
-          'android', 'pics', 'technology', 'xboxone'
+          'Funny', 'Frontend', 'Sports', 'Memes',
+          'Gaming', 'Movies', 'Politics', 'Lifehacks', 
+          'Android', 'Pics', 'Technology', 'Xboxone'
         ]}/>
       
       <Switch>

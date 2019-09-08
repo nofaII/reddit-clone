@@ -36,7 +36,7 @@ class Post extends React.Component {
                     </div>
                     <div className="post__content-image">
                         {post_hint === 'image' 
-                        ? <img src={image} alt=""/> 
+                        ? <img src={image} alt="Some image"/> 
                         : null}  
                     </div>
                     <div className="post__content-comments">

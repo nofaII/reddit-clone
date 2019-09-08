@@ -13,7 +13,7 @@ body {
   background-color: $background-color;
 }
 
-.section-body{
+.section-body {
   width: 600px;
   margin: 0 auto;
   display: flex;
@@ -29,6 +29,17 @@ body {
   margin-bottom: 10px;
   justify-content: space-between;
 
+  &__options {
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px $fonts solid;
+    font-weight: bold;
+    color: $fonts;
+    &:focus {
+      outline: none;
+    }
+  }
+
 
   &___navigation a{
     margin-right: 40px;
@@ -38,6 +49,7 @@ body {
     border: 2px solid #FFFFFF;
     padding: 1px;
     border-radius: 3px;
+    font-size: 15px;
 
     &:hover {
       border: 2px solid $fonts;
@@ -98,4 +110,9 @@ body {
       a {color: $fonts;}
     }
   }
+}
+
+.loader {
+  padding-top: 300px;
+  text-align: center;
 }
