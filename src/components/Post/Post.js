@@ -1,11 +1,11 @@
 import React from 'react';
 
 class Post extends React.Component {
+
     render() {
-        
-        
         const {time, image, score, link, comments, author, title, sub, post_hint} = this.props.post
-        
+        const url = 'https://www.reddit.com' + link;
+
         return (
             <div className="post section-body">
                 <div className="post__upvote">
@@ -28,11 +28,11 @@ class Post extends React.Component {
                         </div>
                     </div>
                     <div className="post__content-title">
-                        <a href={link}>
+                        <div onClick={this.kek}>
                             <h3>
-                                {title}
+                                <a href={url}>{title}</a>
                             </h3>
-                        </a>
+                        </div>
                     </div>
                     <div className="post__content-image">
                         {post_hint === 'image' 
@@ -40,7 +40,7 @@ class Post extends React.Component {
                         : null}  
                     </div>
                     <div className="post__content-comments">
-                        <a href={link}>
+                        <a href={url}>
                             <span>{comments} Comments</span>
                         </a>
                     </div>

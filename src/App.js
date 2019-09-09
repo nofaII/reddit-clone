@@ -13,7 +13,6 @@ const App = () => {
     //score helper
     //post page to func
     //propTypes
-    //currect comment link
 
     //ReadMe refactoring
     //tests
