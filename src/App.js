@@ -8,12 +8,6 @@ const App = () => {
   return (
     // list:
 
-    //arrows around score
-    //404 style
-    //score helper
-    //post page to func
-    //propTypes
-
     //ReadMe refactoring
     //tests
     <div className="app">

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Post = props => {
     const {time, image, score, link, comments, author, title, sub, post_hint} = props.post
@@ -31,7 +32,7 @@ const Post = props => {
                 </div>
                 <div className="post__content-image">
                     {post_hint === 'image' 
-                    ? <img src={image} alt="Some image"/> 
+                    ? <img src={image} alt="Something"/> 
                     : null}  
                 </div>
                 <div className="post__content-comments">
@@ -44,4 +45,17 @@ const Post = props => {
     )
 }
 
+Post.propTypes = {
+    post_hint: PropTypes.string,
+    link: PropTypes.string,
+    comments: PropTypes.number,
+    sub: PropTypes.string,
+    title: PropTypes.string,
+    time: PropTypes.string,
+    image: PropTypes.string,
+    score: PropTypes.string,
+    author: PropTypes.string
+}
+
 export default Post;
+

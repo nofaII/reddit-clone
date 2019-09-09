@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Header = ({fetchAsNecessary, setSubreddit, subreddit, filter, setFilter, options}) => {
 
@@ -30,4 +31,14 @@ const Header = ({fetchAsNecessary, setSubreddit, subreddit, filter, setFilter, o
     )
 }
 
+Header.propTypes = {
+    fetchAsNecessary: PropTypes.func, 
+    setSubreddit: PropTypes.func, 
+    subreddit: PropTypes.string, 
+    filter: PropTypes.string, 
+    setFilter: PropTypes.func, 
+    options: PropTypes.array
+}
+
 export default Header;
+

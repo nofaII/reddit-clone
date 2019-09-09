@@ -1,6 +1,7 @@
 import React from 'react';
 import Post from '../Post/Post';
 import loader from '../../assets/loader.gif';
+import PropTypes from 'prop-types';
 
 class Feed extends React.Component {
     componentDidMount() {
@@ -20,6 +21,7 @@ class Feed extends React.Component {
 
     render() {
         return (
+            
             <div>
                 {this.props.isFetching 
                     ? <div className='loader'>
@@ -35,3 +37,11 @@ class Feed extends React.Component {
 }
 
 export default Feed;
+
+Feed.propTypes = {
+    fetchAsNecessary: PropTypes.func,
+    isFetching: PropTypes.bool,
+    setFilter: PropTypes.func,
+    posts: PropTypes.array,
+    selectedSubreddit: PropTypes.string
+}
