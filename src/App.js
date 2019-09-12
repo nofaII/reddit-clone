@@ -6,10 +6,6 @@ import NotFound from './components/NotFound';
 
 const App = () => {
   return (
-    // list:
-
-    //ReadMe refactoring
-    //tests
     <div className="app">
       <Header 
         options={[
