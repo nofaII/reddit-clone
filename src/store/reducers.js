@@ -3,9 +3,9 @@ import {
     REQUEST_POSTS,
     RECEIVE_POSTS,
     SET_FILTER
-} from '../actions/action-types'
+} from '../actions/action-types';
 
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
 const selectedSubreddit = (state = 'funny', action) => {
     switch (action.type) {

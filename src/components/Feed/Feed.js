@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from '../Post/Post';
+import Post from '../Post';
 import loader from '../../assets/loader.gif';
 import PropTypes from 'prop-types';
 
