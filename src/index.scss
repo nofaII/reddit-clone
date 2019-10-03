@@ -1,5 +1,5 @@
 $background-color: rgb(199, 250, 202);
-$upvote-color: rgb(236, 236, 236);
+$vote-color: rgb(236, 236, 236);
 $fonts: rgb(24, 99, 34);
 
 * {
@@ -64,10 +64,10 @@ body {
   overflow: hidden;
   
 
-  &__upvote {
+  &__vote {
     padding: 0 10px;
     font-size: 10px;
-    background-color: $upvote-color;
+    background-color: $vote-color;
     p {
       margin: 10px 0 0 0;
       width: 30px;

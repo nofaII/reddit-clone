@@ -7,8 +7,8 @@ const Post = props => {
 
     return (
         <div className="post section-body">
-            <div className="post__upvote">
-                <div className="post__upvote-score">
+            <div className="post__vote">
+                <div className="post__vote-score">
                     <p>Score:</p>
                     <p >{score}</p>
                 </div>
