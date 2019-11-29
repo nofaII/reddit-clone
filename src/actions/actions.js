@@ -25,6 +25,7 @@ const fetchPosts = (subreddit, filter) => {
         dispatch(requestPosts(subreddit))
         return axios.get(`/${subreddit}${filter}.json`)
             .then(response => {
+                console.log(response);
                 return response.data.data.children.map(child => ({
                     time: timePassage(child.data.created_utc),
                     image: child.data.url  || false,

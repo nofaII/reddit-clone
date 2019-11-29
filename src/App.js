@@ -3,6 +3,7 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import Feed from './components/Feed/FeedContainer';
 import Header from './components/Header/HeaderContainer';
 import NotFound from './components/NotFound';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const App = () => {
   return (
@@ -13,16 +14,17 @@ const App = () => {
           'Gaming', 'Movies', 'Politics', 'Lifehacks', 
           'Android', 'Pics', 'Technology', 'Xboxone'
         ]}/>
-      
-      <Switch>
-        <Route path='/hot' exact component={Feed}/>
-        <Route path='/top' exact component={Feed}/>
-        <Route path='/new' exact component={Feed}/>
-        <Route path='/controversial' exact component={Feed}/>
-        <Route path='/rising' exact component={Feed}/>
-          <Redirect exact from='/' to='hot'/>
-        <Route component={NotFound}/>
-      </Switch>
+      <ErrorBoundary>
+        <Switch>
+          <Route path='/hot' exact component={Feed}/>
+          <Route path='/top' exact component={Feed}/>
+          <Route path='/new' exact component={Feed}/>
+          <Route path='/controversial' exact component={Feed}/>
+          <Route path='/rising' exact component={Feed}/>
+            <Redirect exact from='/' to='hot'/>
+          <Route component={NotFound}/>
+        </Switch>
+      </ErrorBoundary>
     </div>
   );
 }
